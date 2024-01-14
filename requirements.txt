@@ -5,3 +5,4 @@ flask
 numpy
 seaborn
 matplotlib
+flask_cors
