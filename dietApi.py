@@ -12,7 +12,6 @@ import numpy as np
 import seaborn as sns
 from sklearn.compose import ColumnTransformer
 import matplotlib.pyplot as plt
-from tkinter import *
 from sklearn.model_selection import train_test_split
 
 from sklearn.metrics import confusion_matrix, classification_report,mean_absolute_error
