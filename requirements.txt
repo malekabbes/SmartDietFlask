@@ -3,6 +3,7 @@ gevent
 pandas
 tensorflow
 scikit-learn
+waitress
 flask
 numpy
 seaborn
