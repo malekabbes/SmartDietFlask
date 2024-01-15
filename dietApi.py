@@ -12,6 +12,7 @@ import numpy as np
 import seaborn as sns
 from sklearn.compose import ColumnTransformer
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
 from sklearn.metrics import confusion_matrix, classification_report,mean_absolute_error
 
@@ -53,6 +54,8 @@ def show_entry_fields(data):
 ############### MODEL PREDICTION FOR DIABETES
 scaler1 = StandardScaler()
 X_normalized = scaler1.fit_transform(diabetic_data[['BMI', 'Height', 'Weight', 'AgeYears']])
+import gc
+gc.collect()
 y = diabetic_data['is_diabetic']
 
 X_train, X_test, y_train, y_test = train_test_split(X_normalized, y, test_size=0.2, random_state=42)
@@ -65,7 +68,7 @@ model_d = Sequential([
     Dense(1, activation='sigmoid')
 ])
 model_d.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
-model_d.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test))
+model_d.fit(X_train, y_train, epochs=20, batch_size=32, validation_data=(X_test, y_test))
 loss, accuracy = model_d.evaluate(X_test, y_test)
 print(f"Model Diabeties Accuracy: {accuracy}")
 y_pred_d = model_d.predict(X_test)
@@ -154,7 +157,7 @@ model_bp = Sequential([
 ])
 
 model_bp.compile(optimizer='adam', loss='mean_squared_error')
-model_bp.fit(X_train5, y_train5, epochs=10, batch_size=32, validation_data=(X_test5, y_test5))
+model_bp.fit(X_train5, y_train5, epochs=20, batch_size=32, validation_data=(X_test5, y_test5))
 loss = model_bp.evaluate(X_test5, y_test5)
 
 print(f"Model Loss (Mean Squared Error): {loss}")
