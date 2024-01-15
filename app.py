@@ -9,7 +9,9 @@ import utils.bmi as bmi
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
+allowed_origins = [""]
+
+CORS(app, supports_credentials=True, origins=allowed_origins)
 
 # The route() function of the Flask class is a decorator, 
 # which tells the application which URL should call 
